@@ -1,5 +1,5 @@
 import { ERRORS_ENUM } from "../../consts/ERRORS.js"
-import CustomError from "../../services/errors/CustomError.js"
+import CustomError from "../../services/errors/customError.js"
 
 export const errorHandler = async (err, req, res, next) => {
     try {
