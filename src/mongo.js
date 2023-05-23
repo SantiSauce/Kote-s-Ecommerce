@@ -7,7 +7,7 @@ export default class MongoConnection {
 
     constructor() {
         set('strictQuery', true)
-        connect(process.env.MONGO_URI, {
+        connect(process.env.MONGO_URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })

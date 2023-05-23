@@ -66,7 +66,7 @@ socket(io)
 /*
 // const httpServer = new HttpServer(app)
 // const io = new IOServer(httpServer)
-// mongoose.connect(process.env.MONGO_URI, (error) => {
+// mongoose.connect(process.env.MONGO_URL, (error) => {
 //     if(error){
 //         console.log('DB No conected')
 //         return

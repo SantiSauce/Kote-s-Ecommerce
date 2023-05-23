@@ -9,7 +9,7 @@ dotenv.config()
 
 export const MongoStoreInstance = {
     store: MongoStore.create({
-      mongoUrl: process.env.MONGO_URI,
+      mongoUrl: process.env.MONGO_URL,
       mongoOptions: {
         useNewUrlParser: true,
         useUnifiedTopology: true,

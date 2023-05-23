@@ -13,7 +13,7 @@ switch (process.env.PERSISTENCE) {
     default: //case 'MONGO':
         console.log('connecting mongo..dfvf.')
 
-        mongoose.connect(process.env.MONGO_URI, {
+        mongoose.connect(process.env.MONGO_URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true 
           }, (error) => {
