@@ -1,4 +1,4 @@
-import CustomError from "../services/errors/CustomError.js"
+import CustomError from "../services/errors/customError.js"
 import { generateProduct } from "../utils/products.mock.js"
 import { ERRORS_ENUM } from "../consts/ERRORS.js"
 

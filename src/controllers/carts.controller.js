@@ -4,7 +4,7 @@ import { UserService } from "../repository/index.js";
 import { TicketService } from "../repository/index.js";
 import { ProductService } from "../repository/index.js";
 import { generateRandomString } from "../public/js/generateRandomString.js";
-import CustomError from "../services/errors/CustomError.js";
+import CustomError from "../services/errors/customError.js";
 import { ERRORS_ENUM } from "../consts/ERRORS.js";
 
 export const createCart = async (req, res) => {

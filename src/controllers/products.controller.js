@@ -1,6 +1,6 @@
 import { ProductService } from "../repository/index.js";
 
-import CustomError from "../services/errors/CustomError.js";
+import CustomError from "../services/errors/customError.js";
 import { generateProductErrorInfo } from "../services/errors/info.js";
 import { ERRORS_ENUM } from "../consts/ERRORS.js";
 import nodemailer from 'nodemailer'

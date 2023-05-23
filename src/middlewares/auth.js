@@ -1,7 +1,7 @@
 
 import jwt from 'jsonwebtoken'
 import { ERRORS_ENUM } from "../consts/ERRORS.js";
-import CustomError from "../services/errors/CustomError.js";
+import CustomError from "../services/errors/customError.js";
 import dotenv from 'dotenv'
 dotenv.config()
 

@@ -4,7 +4,7 @@ import { createHash, validatePasswordToReset } from '../utils/utils.js';
 import { isValidPassword } from '../utils/utils.js';
 import { ERRORS_ENUM } from '../consts/ERRORS.js';
 import { generateResetToken } from '../public/js/generateResetToken.js';
-import CustomError from '../services/errors/CustomError.js';
+import CustomError from '../services/errors/customError.js';
 import nodemailer from 'nodemailer'
 import usersModel from '../dao/mongo/models/users.model.js';
 import { extractCookie } from '../utils/utils.js';
