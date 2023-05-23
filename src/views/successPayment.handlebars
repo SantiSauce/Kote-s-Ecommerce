@@ -1,0 +1,58 @@
+<div class="success-container">
+  <h2 class="success-title">¡Compra Exitosa!</h2>
+  
+  <p><strong>Código de Compra:</strong> {{newTicket.code}}</p>
+  <p><strong>Fecha y Hora de Compra:</strong> {{newTicket.purchase_datetime}}</p>
+  <p><strong>Total de la Compra:</strong> {{newTicket.amount}}</p>
+  <p><strong>Comprador:</strong> {{newTicket.purchaser}}</p>
+  
+  <h3>Productos Comprados:</h3>
+  <ul>
+    {{#each purchasedProductsComplete}}
+      <li>
+        <h4>{{this.title}}</h4>
+        <p>{{this.description}}</p>
+        <p>Precio: {{this.price}}</p>
+        <!-- Agrega aquí cualquier otro detalle del producto que desees mostrar -->
+      </li>
+    {{/each}}
+  </ul>
+</div>
+
+<style>
+    *{
+        color: black
+    }
+    .success-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.success-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 20px;
+}
+
+h4 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+p {
+  margin: 0;
+}
+
+</style>

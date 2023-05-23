@@ -1,0 +1,17 @@
+<div class="container">
+    <h2>Users List</h2><br>
+    {{#each users}}
+    <p>Name: {{this.first_name}}</p>
+    <p>Last name: {{this.last_name}}</p>
+    <p>Email: {{this.email}}</p>
+    <p>Role: {{this.rol}}</p><br>
+    {{/each}}
+</div>
+
+<style>
+    .container {
+        margin-left: 15px;
+        color: black;
+    }
+
+</style> 

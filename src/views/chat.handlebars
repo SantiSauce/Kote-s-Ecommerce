@@ -1,0 +1,32 @@
+
+<div class="container">
+        <h3>Por favor, ingrese su mensaje:   </h3><br>
+        <input type="text" id="chatBox">
+</div>
+
+<p id="messageLogs"></p>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"> </script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/main.js"></script>
+
+<style>
+    .container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+        padding: 50px;
+        height: 100%;
+        background-color: #a2a8d3;
+        margin: 10px;
+    }
+    input{
+        margin-left: 20px;
+        width: 500px;
+        height: 30px;
+    }
+    
+</style>

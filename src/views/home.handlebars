@@ -1,0 +1,46 @@
+{{!-- <div class="container">
+<a href="/allProducts">Show all Products (me falta hacer esta vista, igual es link a la vista de productos, hace click je)</a>
+</div>
+<style>
+    .container a{
+        color: black;
+    }
+    
+</style>  --}}
+
+<div class="container">
+  <h1>¡Bienvenido!</h1>
+  <button id="verProductos">Ver productos</button>
+</div>
+
+<script>
+    document.getElementById('verProductos').addEventListener('click', function() {
+  window.location.href = '/allProducts';
+});
+
+</script>
+{{!-- <script src="script.js"></script> --}}
+
+<style>
+    *{
+        color: black
+    }
+    .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+</style>

@@ -1,0 +1,103 @@
+<h1>Usuarios</h1>
+  
+  <div id="users-container">
+    {{#each users}}
+      <div class="card">
+        <h2>{{first_name}} {{last_name}}</h2>
+        <p>Email: {{email}}</p>
+        <p>Rol: <span class="role">{{rol}}</span></p>
+        <div class="card-buttons">
+          <button class="role-button" data-id="{{_id}}">Cambiar Rol</button>
+          <button class="delete-button" data-id="{{_id}}">Eliminar</button>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
+
+
+  <script>
+    // Agrega el código JavaScript necesario para manejar los eventos de los botones
+    const roleButtons = document.querySelectorAll('.role-button');
+    const deleteButtons = document.querySelectorAll('.delete-button');
+
+    roleButtons.forEach((button, index) => {
+      button.addEventListener('click', async () => {
+        const userId = button.dataset.id;
+        const roleSpan = button.parentNode.parentNode.querySelector('.role');
+        const currentRole = roleSpan.textContent;
+        const newRole = currentRole === 'user' ? 'premium' : 'user';
+        roleSpan.textContent = newRole;
+        try{
+            const response = await fetch(`/session/premium/${userId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ userId })
+            })
+      
+            if (response.ok) {
+                console.log('Rol actualizado');
+            } else {
+                console.log(userId);
+                console.error('Error al actualizar el rol');
+            }
+        } catch (error) {
+            console.error('Error al realizar la solicitud:', error);
+        }
+    });
+});
+
+    deleteButtons.forEach((button, index) => {
+      button.addEventListener('click', async () => {
+        const userId = button.dataset.id;
+        const card = button.parentNode.parentNode;
+        card.remove();
+        // Aquí puedes agregar la lógica para enviar la solicitud al servidor y eliminar el usuario de la base de datos
+        try{
+            const response = await fetch(`/session/delete/${userId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
+            if(response.ok){
+                console.log('Usuario eliminado')
+            } else {
+                console.log('Error al eliminar el usuario')
+            }
+        } catch (error){
+          console.error('Error al realizar la solicitud:', error);
+        }
+      })
+    })
+
+  </script>
+  <style>
+    /* Estilos para las cards */
+    .card {
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    /* Estilos para los botones */
+    .card-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    /* Estilos para el botón de eliminar */
+    .delete-button {
+      background-color: #ff0000;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>

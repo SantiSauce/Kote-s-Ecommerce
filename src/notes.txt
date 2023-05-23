@@ -1,0 +1,9 @@
+github:
+appname: ginEcommerceApp
+http://localhost:8082/sessions/githubcallback
+Owned by: @SantiSauce
+
+App ID: 287353
+
+Client ID: Iv1.80eab679689061f3
+784034fe38fd6fe5bbada150bf3fec518a0d64e5

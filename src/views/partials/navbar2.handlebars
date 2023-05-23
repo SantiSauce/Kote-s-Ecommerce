@@ -1,0 +1,598 @@
+<header class="wrapper-navbar">
+      <!-- brand-navbar start -->
+      <div class="brand-navbar">
+        <a href="/home"><img src="https://i.postimg.cc/W4PS83q9/logo-gin-store.png" alt="brand-logo"></a>
+      </div>
+      <!-- brand-navbar end -->
+      <!-- nav-link start -->
+      <nav class="nav-link">
+        <ul>
+          {{#if activeSession}}
+          {{else}}
+          <li><a href="/register">sign in</a></li>
+          <li><a href="/login">log in</a></li>
+          <li><a href="/session/login-github">github log in</a></li>
+          {{/if}}
+        </ul>
+      </nav>
+      <!-- nav-link end -->
+      <!-- icon-navbar start --> 
+       <div class="icon-navbar">
+        <!-- icon-search & search-box start -->
+        <div class="icon-search-navbar">
+          <input type="checkbox" />
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <div class="search-box">
+            <input type="search" placeholder="Search" />
+            <button type="submit">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+        </div>
+        <!-- icon-search & search-box end -->
+        <div class="icon-user-navbar">
+          <a href="/cart/{{user.cart._id}}"><input type="checkbox" /></a>
+          <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+        </div>
+     
+        <!-- icon-cart-navbar & cart-box start -->
+        {{#if activeSession}}
+        <div class="icon-cart-navbar">
+          <input type="checkbox" />
+          <i class="fa-sharp fa-solid fa-user"></i>
+          <div class="cart-box">
+            <div class="cart-container">
+              <div class="cart-list">
+                
+                <figcaption class="cart-detail">
+                  <p>My Profile</p>
+                </figcaption>
+               
+              </div>
+              <div class="cart-list">
+                
+                <figcaption class="cart-detail">
+                  <p>Compras</p>
+                </figcaption>                
+              </div>
+              <div class="cart-list">
+                
+                <figcaption class="cart-detail">
+                  <p>Chat</p>
+                </figcaption>
+              </div>
+                {{#if admin}}
+              <div class="cart-list">
+                <figcaption class="cart-detail">
+                  <a href="/sessions/admin"><p>Admin</p></a>
+                </figcaption>                                
+              </div>
+              <div class="cart-list">
+                <figcaption class="cart-detail">
+                  <a href="/insertProduct"><p>InsertProduct</p></a>
+                </figcaption>                                
+              </div>
+              {{/if}}
+              <div class="cart-list">
+                <figcaption class="cart-detail">
+                  <p>empty</p>
+                </figcaption>
+                 
+              </div>
+            </div>
+            <div class="cart-checkout">
+              <a href="/session/logout"><button type="submit">Log Out</button></a>
+            </div>
+          </div>
+        </div>
+        {{else}}
+        <!-- icon-cart-navbar & cart-box end -->
+        <!-- icon-bar-menu & side-nav start -->
+        <div class="icon-menu-navbar">
+          <input type="checkbox" />
+          <i class="fa-solid fa-bars"></i>
+          <nav class="side-nav-link">
+            <ul>
+              <a href="/home"><li>home</li></a>
+              <a href="/sessions/register"><li>sig in</li></a>
+              <a href="/sessions/login"><li>log in</li></a>
+              <a href="/sessions/login-github"><li>github log in</li></a>
+              <a href="/sessions/logout"><li>log out</li></a>
+              <a href="#contact"><li>contact</li></a>
+              <a href="#blogs"><li>blogs</li></a>
+            </ul>
+          </nav>
+        </div>
+        {{/if}}
+        <!-- icon-bar-menu & side-nav end -->
+      </div>
+      <!-- icon-navbar end -->
+    </header>
+
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+
+/* reseting default browser style */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+/* rooting for all styling */
+:root {
+  --card-bg-color: rgb(19, 23, 32);
+  --shadow-bg-color: rgba(128, 128, 128, 0.2);
+  --body-text-color: rgb(225, 225, 225);
+  --special-text-color: rgb(177, 135, 81);
+  --main-font-family: 'Roboto', sans-serif;
+  --normal-font-size: 1rem;
+  --title-font-size: 2rem;
+  --main-transition: all 0.3s ease-in-out;
+}
+
+/* changing styling copy text web color */
+::selection {
+  color: var(--body-text-color);
+  background-color: var(--special-text-color);
+}
+
+/* styling for link text color */
+a {
+  color: var(--body-text-color);
+  transition: var(--main-transition);
+}
+
+/* styling for size icon font awesome */
+i {
+  font-size: var(--normal-font-size);
+  transition: var(--main-transition);
+}
+
+/* positioning all content image */
+img {
+  object-fit: cover;
+  object-position: center;
+}
+
+button[type='submit'] {
+  font-weight: 700;
+  border-radius: 3px;
+  border: none;
+  text-transform: capitalize;
+  cursor: pointer;
+  background-color: var(--special-text-color);
+  font-size: var(--normal-font-size);
+  font-family: var(--main-font-family);
+  transition: var(--main-transition);
+}
+
+/* styling default for html & body views */
+html,
+body {
+  font-weight: normal;
+  font-style: normal;
+  scroll-behavior: smooth;
+  line-height: 1.65;
+  font-family: var(--main-font-family);
+  font-size: var(--normal-font-size);
+  color: var(--body-text-color);
+}
+
+
+.wrapper-navbar {
+  background-color: var(--body-bg-color);
+  width: 100%;
+  height: 80px;
+  padding: 0 8em;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 4px var(--body-text-color);
+  background-color: rgb(19, 23, 32);
+}
+
+/* brand-navbar style */
+.brand-navbar {
+  width: 65px;
+  height: 65px;
+}
+
+.brand-navbar a img {
+  width: 120%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.brand-navbar a img:hover {
+  animation: shake 0.3s;
+}
+
+@keyframes shake {
+  25% {
+    transform: translateX(4px);
+  }
+
+  50% {
+    transform: translateX(-4px);
+  }
+
+  75% {
+    transform: translateX(4px);
+  }
+}
+
+/* nav-link style */
+.nav-link {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  text-transform: capitalize;
+  font-weight: 700;
+}
+
+.nav-link ul {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-link ul li {
+  width: max-content;
+  overflow-x: hidden;
+}
+
+.nav-link ul li a:hover {
+  color: var(--special-text-color);
+}
+
+.nav-link ul li a::after {
+  content: '';
+  display: block;
+  width: 50%;
+  padding-bottom: 0.2em;
+  transform: translate(-200%);
+  border-bottom: 2px solid var(--special-text-color);
+  transition: 1.5s;
+}
+
+.nav-link ul li a:hover::after {
+  transform: translate(200%);
+}
+
+/* icon-navbar style */
+.icon-navbar {
+  width: 15%;
+  max-width: calc(100% - 94%);
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon-navbar i {
+  font-size: 1.2rem;
+  margin-right: 15px;
+}
+
+.icon-search-navbar,
+.icon-user-navbar,
+.icon-cart-navbar,
+.icon-menu-navbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* hidding icon-menu-navbar in desktop layout & will be showing in mobile layout */
+.icon-menu-navbar {
+  display: none;
+}
+
+/* icon-navbar checkbox style */
+.icon-search-navbar input[type='checkbox'],
+.icon-user-navbar input[type='checkbox'],
+.icon-cart-navbar input[type='checkbox'],
+.icon-menu-navbar input[type='checkbox'] {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  transform: scale(2);
+  opacity: 0;
+  cursor: pointer;
+}
+
+.icon-search-navbar input[type='checkbox']:hover ~ i,
+.icon-user-navbar input[type='checkbox']:hover ~ i,
+.icon-cart-navbar input[type='checkbox']:hover ~ i,
+.icon-menu-navbar input[type='checkbox']:hover ~ i {
+  color: var(--special-text-color);
+}
+
+/* checkbox style for icon-search-navbar to show up search-box class */
+.icon-search-navbar input[type='checkbox']:checked ~ .search-box {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* search-box is child from icon-search-navbar */
+.search-box {
+  width: 35.5%;
+  padding: 0.7em 1em;
+  position: fixed;
+  top: 100px;
+  right: 12%;
+  display: flex;
+  background-color: var(--body-text-color);
+  border-radius: 3px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: var(--main-transition);
+}
+
+.search-box input[type='search'] {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-family: var(--main-font-family);
+  font-size: var(--normal-font-size);
+}
+
+.search-box button[type='submit'] {
+  padding-left: 1em;
+  border: none;
+  background-color: transparent;
+}
+
+.search-box button[type='submit'] i {
+  cursor: pointer;
+}
+
+.search-box button[type='submit'] i:hover {
+  color: var(--special-text-color);
+}
+
+/* checkbox style for icon-cart-navbar to show up cart-box class */
+.icon-cart-navbar input[type='checkbox']:checked ~ .cart-box {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+/* cart-box is child from icon-cart-navbar */
+.cart-box {
+  width: 22%;
+  height: 520px;
+  padding: 1em;
+  position: fixed;
+  top: 80px;
+  right: 0;
+  background-color: var(--body-text-color);
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(1000px);
+  transition: 0.5s ease-in-out;
+}
+
+.cart-container {
+  width: 100%;
+  height: 375px;
+  overflow-y: auto;
+}
+
+.cart-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.7em;
+  margin-right: 0.2em;
+  padding-right: 0.6em;
+  border-radius: 3px;
+  background-color: var(--shadow-bg-color);
+}
+
+.cart-item {
+  width: 85px;
+  height: 80px;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: var(--special-text-color);
+}
+
+.cart-item img {
+  width: 100%;
+  height: 100%;
+}
+
+.cart-detail {
+  flex: 0.9;
+  display: flex;
+  flex-direction: column;
+  text-transform: capitalize;
+  color: var(--body-bg-color);
+}
+
+.cart-detail p:first-child {
+  font-weight: 700;
+}
+
+.cart-detail p:last-child {
+  color: var(--special-text-color);
+}
+
+.cart-detail p:last-child span {
+  font-size: 0.8rem;
+  text-decoration: line-through;
+}
+
+.icon-remove-x button[type='submit'] {
+  border: none;
+  background-color: transparent;
+}
+
+.icon-remove-x button[type='submit'] i {
+  cursor: pointer;
+}
+
+.icon-remove-x button[type='submit'] i:hover {
+  color: var(--special-text-color);
+}
+
+.cart-checkout button[type='submit'] {
+  width: 100%;
+  margin-top: 1.5em;
+  padding: 0.7em 1em;
+  cursor: pointer;
+  color: var(--body-text-color);
+}
+
+.cart-checkout button[type='submit']:hover {
+  letter-spacing: 2px;
+}
+
+/* checkbox style for icon-menu-navbar to show up side-nav-link class */
+.icon-menu-navbar input[type='checkbox']:checked ~ .side-nav-link {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+/* side-nav-link is child from icon-menu-navbar */
+.side-nav-link {
+  width: 22%;
+  height: 100%;
+  padding: 1em;
+  background-color: var(--body-text-color);
+  border-top-left-radius: 3px;
+  position: fixed;
+  top: 80px;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(1000px);
+  transition: 0.5s ease-in-out;
+}
+
+.side-nav-link ul a {
+  text-transform: capitalize;
+  font-weight: 700;
+  color: var(--body-bg-color);
+}
+
+.side-nav-link ul a li {
+  padding: 1em;
+  border-radius: 3px;
+  transition: var(--main-transition);
+  color: black;
+}
+
+.side-nav-link ul a li:hover {
+  padding-left: 2em;
+  color: var(--body-text-color);
+  background-color: var(--special-text-color);
+}
+
+@media only screen and (max-width: 960px) {
+  /* parent for (.brand-navbar, .nav-link, and .icon-navbar) */
+  .wrapper-navbar {
+    padding: 0 2em;
+  }
+
+  /* nav-link style */
+  .nav-link {
+    display: none;
+  }
+
+  /* icon-navbar style */
+  .icon-navbar {
+    width: 35%;
+    max-width: calc(100% - 50%);
+  }
+
+  .icon-menu-navbar {
+    display: flex;
+  }
+
+  /* search-box is child from icon-search-navbar */
+  .search-box {
+    width: 79%;
+    left: 10.5%;
+  }
+
+  /* cart-box is child from icon-cart-navbar */
+  .cart-box {
+    width: 76%;
+    height: 470px;
+  }
+
+  .cart-container {
+    height: 332px;
+  }
+
+  .cart-list {
+    margin-right: 0.45em;
+  }
+
+  .cart-item {
+    width: 75px;
+    height: 70px;
+  }
+
+  /* side-nav-link is child from icon-menu-navbar */
+  .side-nav-link {
+    width: 82%;
+  }
+}
+
+
+
+
+@media only screen and (min-width: 768px) {
+  /* parent for (.brand-navbar, .nav-link, and .icon-navbar) */
+  .wrapper-navbar {
+    padding: 0 6em;
+  }
+
+  /* icon-navbar style */
+  .icon-navbar {
+    width: 20%;
+  }
+
+  /* search-box is child from icon-search-navbar */
+  .search-box {
+    width: 75%;
+    left: 12.5%;
+  }
+
+  /* cart-box is child from icon-cart-navbar */
+  .cart-box {
+    width: 20%;
+    height: 280px;
+  }
+
+  .cart-container {
+    height: 180px;
+  }
+
+  .cart-item {
+    width: 80px;
+    height: 75px;
+  }
+
+  /* side-nav-link is child from icon-menu-navbar */
+  .side-nav-link {
+    width: 40%;
+  }
+}
+    </style>

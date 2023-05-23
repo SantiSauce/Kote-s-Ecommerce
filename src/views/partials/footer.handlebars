@@ -1,0 +1,209 @@
+ <footer class="wrapper-footer">
+    <!-- footer-credits start -->
+    <div class="footer-credits">
+      <!-- footer-brand-image start -->
+      <figure class="footer-brand-image"><img src="https://i.postimg.cc/W4PS83q9/logo-gin-store.png" alt="brand-logo">
+        <!-- footer-brand-text start -->
+        <figcaption class="footer-brand-text">
+          <h2>Kote's <span>gin</span> store</h2>
+          <p>gins & botanicals</p>
+        </figcaption>
+        <!-- footer-brand-text end -->
+      </figure>
+      <!-- footer-brand-image end -->
+      <!-- footer-credits-address start -->
+      <address class="footer-credits-address">
+        <p>San Miguel, Buenos Aires</p>
+        <p>Argentina</p>
+      </address>
+      <!-- footer-credits-address end -->
+    </div>
+    <!-- footer-credits end -->
+
+    <!-- wrapper-footer-profile start -->
+    <div class="wrapper-footer-profile">
+      <!-- footer-credits-company start -->
+      <div class="footer-credits-company">
+        <h3>company</h3>
+        <nav>
+          <ul>
+            <li><a href="#">about us</a></li>
+            <li><a href="#">our services</a></li>
+            <li><a href="#">privacy policy</a></li>
+            <li><a href="#">franchise program</a></li>
+            <li><a href="#">career</a></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- footer-credits-company end -->
+      <!-- footer-credits-help start -->
+      <div class="footer-credits-help">
+        <h3>get help</h3>
+        <nav>
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">shipping</a></li>
+            <li><a href="#">returns</a></li>
+            <li><a href="#">order status</a></li>
+            <li><a href="#">payment options</a></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- footer-credits-help end -->
+      <!-- footer-social-media start -->
+      <div class="footer-social-media">
+        <h3>follow me</h3>
+        <nav>
+          <ul>
+            <li><a href="#">twitter</a></li>
+            <li><a href="https://www.instagram.com/dediindra_onesantisauce06/" target="_blank">instagram</a></li>
+            <li><a href="https://www.linkedin.com/in/santiago-saucedo-3a91ab185" target="_blank">linkedIn</a></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- footer-social-media end -->
+    </div>
+    <!-- wrapper-footer-profile end -->
+  </footer>
+  <!-- wrapper-footer end -->
+
+  <!-- wrapper-copyright start -->
+  <footer class="wrapper-copyright">
+    <!-- footer-copyright start -->
+    <div class="footer-copyright">
+      &copy;2023 <a href="https://linktr.ee/dediindra_one" target="_blank">Santiago Saucedo</a> | all right reserved.
+    </div>
+    <!-- footer-copyright end -->
+    <!-- footer-back-to-top start -->
+    <div class="footer-back-to-top">
+      <a href="#"><i class="fa-solid fa-chevron-up" id="footer-back-icon"></i></a>
+    </div>
+    <!-- footer-back-to-top end -->
+  </footer>
+  <!-- wrapper-copyright end -->
+
+  <style>
+    .wrapper-footer {
+  width: 100%;
+  padding: 2em;
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+  background-color: var(--card-bg-color);
+}
+
+/* footer-credits (footer-brand-image, footer-brand-text, footer-credits-address, & button) style */
+.footer-credits {
+  width: 40%;
+}
+
+.footer-brand-image {
+  display: flex;
+  align-items: center;
+  padding-bottom: 1.5em;
+}
+
+.footer-brand-image img {
+  height: 150px;
+  margin-right: 1em;
+  display: flex;
+}
+
+.footer-brand-text h2 {
+  font-size: 1.75rem;
+  text-transform: uppercase;
+}
+
+.footer-brand-text h2 span {
+  color: var(--special-text-color);
+}
+
+.footer-credits-address {
+  font-style: normal;
+}
+
+.footer-credits-address button[type='submit'] {
+  width: 45%;
+  margin-top: 1.5em;
+  padding: 0.7em 1em;
+  color: var(--body-text-color);
+}
+
+.footer-credits-address button[type='submit']:hover {
+  letter-spacing: 2px;
+}
+
+/* styling for footer-credits-company, footer-credits-help, & footer-social-media  */
+.wrapper-footer-profile {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-credits-company,
+.footer-credits-help,
+.footer-social-media {
+  width: 30%;
+}
+
+.footer-credits-company h3,
+.footer-credits-help h3,
+.footer-social-media h3 {
+  width: max-content;
+  margin-bottom: 1em;
+}
+
+.footer-credits-company h3::after,
+.footer-credits-help h3::after,
+.footer-social-media h3::after {
+  content: '';
+  display: block;
+  width: 50%;
+  padding-bottom: 0.2em;
+  border-bottom: 2px solid var(--special-text-color);
+  transition: 1.5s;
+}
+
+.footer-credits-company ul li,
+.footer-credits-help ul li,
+.footer-social-media ul li {
+  margin-bottom: 0.5em;
+}
+
+.footer-credits-company ul a:hover,
+.footer-credits-help ul a:hover,
+.footer-social-media ul a:hover {
+  color: rgba(225, 225, 225, 0.5);
+}
+
+/* wrapper-copyright (footer-copyright, footer-back-icon, & footer-back-to-top ) style */
+.wrapper-copyright {
+  width: 100%;
+  padding: 1em 2em 1.5em;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--card-bg-color);
+}
+
+.footer-copyright {
+  text-transform: capitalize;
+}
+
+.footer-copyright a {
+  color: var(--special-text-color);
+}
+
+.footer-back-to-top a {
+  padding: 1em;
+  border-radius: 3px;
+  background-color: var(--shadow-bg-color);
+}
+
+.footer-back-to-top a:hover #footer-back-icon {
+  transform: translateY(-5px);
+}
+
+
+
+  </style>

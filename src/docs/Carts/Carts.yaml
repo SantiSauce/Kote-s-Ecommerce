@@ -1,0 +1,191 @@
+paths:
+  /api/carts:
+    get:
+      tags:
+        - Carts
+      summary: Obtiene todos los carritos
+      description: Retorno todos los carritos creados hasta el momento
+      responses:
+        "200":
+          description: Los carritos fueron obtenidos de la bae de datos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/Cart"
+        "500":
+          description: Error interno del servidor
+    post:
+      summary: Crear un carrito
+      description: Crea un nuevo carrito
+      tags:
+        - Carts
+      responses:
+        "200":
+          description: El carrito se creo satifactoriamente
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#components/schemas/Cart"
+        "500":
+          description: Error interno del servidor
+  /api/carts/{cid}:
+    delete:
+      summary: Elimina todos los productos del carrito
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito que se solicita
+          schema:
+            $type: string
+      responses:
+        "200":
+          description: Carrito vacio
+          content:
+            application/json:
+              schema:
+                $ref: "#components/schemas/Cart"
+        "500":
+          description: Error interno del servidor
+    post:
+      summary: Actualiza y/o agrega productos del carrito
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito que se solicita
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Carrito actualizado
+        "500":
+          description: Error interno del servidor
+  /api/carts/{cid}/product/{pid}:
+    post:
+      summary: Agrega un producto al carrito
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del cart que se solicita
+          schema:
+            $type: String
+        - name: pid
+          in: path
+          required: true
+          description: ID del producto que se solicita
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Producto agregado
+        "500":
+          description: Error interno del server. Query defectuosa o un fallo a la conexion a la DB
+    put:
+      summary: Modifica la cantidad del producto
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del cart que se solicita
+          schema:
+            $type: String
+        - name: pid
+          in: path
+          required: true
+          description: ID del producto que se solicita
+          schema:
+            $type: String
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/requestBodies/addQuantity"
+      responses:
+        "200":
+          description: Catidad agregada al producto
+        "500":
+          description: Error interno del server. Query defectuosa o un fallo a la conexion a la DB
+    delete:
+      summary: Elimina un producto del carrito
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del cart que se solicita
+          schema:
+            $type: String
+        - name: pid
+          in: path
+          required: true
+          description: ID del producto que se solicita
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Producto eliminado del carrito
+        "500":
+          description: Error interno del server. Query defectuosa o un fallo a la conexion a la DB
+  /api/carts/{cid}/purchase:
+    post:
+      summary: Genera la compra del carrito
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del cart que se solicita para generar la compra
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Compra finalizada
+        "500":
+          description: Error interno del servidor
+components:
+  schemas:
+    Cart:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: ID auto generado en mongo
+        carts:
+          type: array
+          description: Array con el numero de producto y la cantidad
+          items:
+            $ref: "#components/schemas/CartProduct"
+      example:
+        _id: 63bf146e58e7baa835ee686f
+        carts:
+          _id: 63bf146e58e7baa835ee686f
+          quantity: 1
+    CartProduct:
+      type: object
+      properties:
+        _id:
+          type: objectId
+          description: ID auto generado de mongo del producto
+        quantity:
+          type: number
+          description: Cantidad de productos agregados al carrito
+      example:
+        _id: 63bf146e58e7baa835ee686f
+        quantity: 1
+  

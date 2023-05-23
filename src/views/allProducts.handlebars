@@ -1,0 +1,300 @@
+<div class="product-label">
+  <div class="label-text">
+    <h1>All Products</h1>
+  </div>
+</div>
+<div class="card">
+  {{!-- {{#with user.cart._id}} --}}
+    {{#each response.payload}}
+      <figure class="snip1268">
+        <div class="image">
+          <img src="{{this.thumbnail}}" alt="{{this.title}}"/>
+          <div class="icons">
+            <a href="#"><i class="ion-star"></i></a>
+            <a href="#"> <i class="ion-share"></i></a>
+            <a href="#"> <i class="ion-search"></i></a> 
+          </div>
+            <a href="/api/carts/{{../user.cart._id}}/product/{{this._id}}" class="add-to-cart" onclick="addToCart(event)">Add to Cart</a>
+        </div>
+        <figcaption>
+          <a linkRef="http://"></a>
+          <a href="/products/{{this._id}}"><h2 id="oneProduct">{{this.title}}</h2></a>
+          <p>{{this.category}}</p>
+          <div class="price">${{this.price}}</div>
+        </figcaption>
+      </figure>
+    {{/each}}
+  {{!-- {{/with}} --}}
+</div>
+<div class="container">
+  <div class="pagination p8">
+    <ul>
+      <a class="is-active" href="{{response.prevLink}}"><li><</li></a>
+      <a href="{{response.nextLink}}"><li>></li></a>
+    </ul>
+  </div>   
+</div>
+
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"> </script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/products.js"></script>
+
+<script>
+    const socket = io()
+
+    if({{response.cuenta}} <= 1){
+      Swal.fire({
+      title: 'Welcome',
+      html: `<h2>{{response.user.first_name}} {{response.user.last_name}}</h2>`
+      })
+    }    
+  </script>
+
+<style>
+
+  
+body{
+  background-color: rgb(19, 23, 32);
+}
+
+a{
+  text-decoration: none;
+}
+
+p, li, a{
+  font-size: 14px;
+}
+
+.col {
+	display: block;
+	float:left;
+	margin: 1% 0 1% 1.6%;
+}
+
+.col:first-of-type {
+  margin-left: 0;
+}
+
+.container{
+  width: 100%;
+  max-width: 940px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
+
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+.cf {
+    *zoom: 1;
+}
+
+.pagination{
+  padding: 30px 0;
+}
+
+.pagination ul{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.pagination a{
+  display: inline-block;
+  padding: 10px 18px;
+  color: #222;
+}
+
+
+/* EIGHT */
+
+.p8 a{
+  margin: auto 5px;
+  color: #fff;
+  font-weight: bold;
+  border: 3px solid #fff;
+}
+
+.p8 .is-active{
+  background-color: #fff;
+  color: #d0d0d0;
+}
+.card{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 10px;
+}
+  /* Icon set - http://ionicons.com */
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,700);
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+.snip1268 {
+  font-family: 'Raleway', Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  min-width: 220px;
+  max-width: 310px;
+  width: 100%;
+  color: #333333;
+  text-align: center;
+  background-color: #ffffff;
+  line-height: 1.6em;
+  box-shadow: 0px 6px 5px 1px rgb(177, 135, 81);
+}
+
+.snip1268 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+  color: black;
+}
+.snip1268 .image {
+  position: relative;
+}
+.snip1268 img {
+  height: 300px;
+  max-width: 100%;
+  vertical-align: top;
+  -webkit-transition: opacity 0.35s;
+  transition: opacity 0.35s;
+}
+.snip1268 .icons,
+.snip1268 .add-to-cart {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  opacity: 0;
+}
+.snip1268 .icons {
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+  top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.snip1268 .icons a {
+  width: 32.5%;
+  background: #ffffff;
+}
+.snip1268 .icons a:hover {
+  background: #000000;
+}
+.snip1268 .icons a:hover i {
+  color: #ffffff;
+  opacity: 1;
+}
+.snip1268 .icons i {
+  line-height: 46px;
+  font-size: 20px;
+  color: #000000;
+  text-align: center;
+  opacity: 0.7;
+  margin: 0;
+}
+.snip1268 .add-to-cart {
+  position: absolute;
+  bottom: 20px;
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+  font-size: 0.8em;
+  color: white;
+  line-height: 46px;
+  letter-spacing: 1.5px;
+  background-color: rgb(177, 135, 81);
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 270px;
+}
+.snip1268 .add-to-cart:hover {
+  background: #363333;
+  color: #black;
+  
+}
+.snip1268 figcaption {
+  padding: 20px 20px 30px;
+};
+
+.snip1268 h2,
+.snip1268 p {
+  margin: 0;
+  text-align: center;
+}
+.snip1268 h2 {
+  font-weight: 700;
+  font-size: 18px;
+}
+.snip1268 p {
+  margin-bottom: 15px;
+  font-size: 0.85em;
+  font-weight: 500;
+}
+.snip1268 .price {
+  font-size: 1.3em;
+  opacity: 0.9;
+  font-weight: 700;
+  text-align: right;
+}
+.snip1268:hover img,
+.snip1268.hover img {
+  opacity: 0.8;
+}
+.snip1268:hover .icons,
+.snip1268.hover .icons,
+.snip1268:hover .add-to-cart,
+.snip1268.hover .add-to-cart {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.banner-text h1 { font-size: 60px; }
+
+
+.banner h1, .banner h3, .banner h6 {
+  margin: 0;
+  text-shadow: 2px 2px 6px #000;
+  text-align: center;
+}
+
+.banner {
+  color: white;
+  background: url('https://www.theginguild.com/wp-content/uploads/2019/11/pink-gin-wide-banner.jpg') top left/cover no-repeat;
+  height: 330px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.label-text h1{
+  font-size: 20px;
+}
+.product-label h1{
+  margin: 0;
+  text-align: center;
+}
+.product-label{
+  margin-top: 10px;
+  color: white;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+</style>
+
+

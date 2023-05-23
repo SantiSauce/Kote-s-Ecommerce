@@ -1,0 +1,213 @@
+{{!-- 
+<div class="body">
+  <div class="product-label">
+  <div class="label-text">
+    <h1>My Cart</h1>
+  </div>
+</div>
+  <div class="card">
+    <div class="header">
+     <h4>Shopping Cart :
+       <span id="tot">
+       0
+       </span>$</h4>
+    </div>
+    {{#each cart.products}}
+    <div class="product" id="product"> 
+      <div>
+      </div>
+      
+      <div class="disc">
+        <div class="name">{{this.product.title}}</div>
+        <div class="color">{{this.product.category}}</div>
+        
+      </div>
+      <div class="quant">
+        <span class="minus">-</span>
+        <span class="qt">{{this.quantity}}</span>
+        <div><button id="plus"  value="{{this.product._id}}">+</button></div>
+      </div>
+      <div>
+        <h4 class="price">
+          {{this.product.price}}$
+        </h4>
+        <h4 class="pu" >{{this.product.price}}</h4>
+        
+      </div>
+        <div class="op">
+        <span class="remove">remove</span>
+          </div>
+      
+    </div>
+    {{/each}}
+    <div>
+      <button id="purchase__btn" value="{{cart._id}}">CHECKOUT</button>
+    </div>
+  </div>
+</div> --}}
+
+<div class="body">
+  <div class="product-label">
+    <div class="label-text">
+      <h1>My Cart</h1>
+    </div>
+  </div>
+  <div class="card">
+    <div class="header">
+      <h4>Shopping Cart: <span id="tot">0</span>$</h4>
+    </div>
+    {{#each cart.products}}
+    <div class="product" id="product"> 
+      <!-- Aquí puedes mostrar los detalles del producto -->
+      <div>
+        <!-- Imagen del producto -->
+      </div>
+      
+      <div class="disc">
+        <div class="name">{{this.product.title}}</div>
+        <div class="color">{{this.product.category}}</div>
+      </div>
+      
+      <div class="quant">
+        <span class="minus">-</span>
+        <span class="qt">{{this.quantity}}</span>
+        <div><button class="plus" id="plus" value="{{this.product._id}}">+</button></div>
+      </div>
+      
+      <div>
+        <h4 class="price">{{this.product.price}}$</h4>
+        <h4 class="pu">{{this.product.price}}</h4>
+      </div>
+      
+      <div class="op">
+        <span class="remove">remove</span>
+      </div>
+    </div>
+    {{/each}}
+    
+    <div>
+      <button id="purchase__btn" value="{{cart._id}}">CHECKOUT</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+<style>
+  .qt{
+    margin-top: 4px;
+  }
+  body{
+    margin:0;
+  font-family:arial;
+    background:#d7dbe0;
+      background-color: rgb(19, 23, 32);
+}
+  
+  .card{
+    border-radius:10px;
+    
+    width:800px;
+   margin:auto;
+    margin-top:30px;
+    margin-bottom: 30px;
+  }
+  .header{
+    width:90%;
+    color:rgb(177, 135, 81);
+    font-size:22px;
+    text-align: center;
+  
+    padding:0 5%;
+    
+  }
+  
+  .product{
+    display:flex;
+    width:90%;
+    align-items:center;
+    justify-content:space-between;
+    padding:2% 5%;
+    border-top:1px solid  #e3e6ea;
+    margin: auto;
+    
+    
+  }
+  .quant{
+    display:flex;
+    justify-content:space-between;
+    width:90px;
+    
+  }
+  .pu{display:none;}
+  .remove{
+    text-align: center;
+  }
+  .op{
+    text-align: center;
+  float: right;
+  display: inline-block;
+  width: 100px;
+  margin: 0 40px 0 16px;
+  box-sizing: border-box;
+  border: transparent;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  cursor: pointer;
+  outline: none;
+  }
+  .name{
+    font-size:18px;
+    margin-bottom:10px;
+  }
+  .color{
+    color:darkgray;
+    font-weight:10;
+  }
+  .plus,.minus{
+    color:#AAB8C2;
+    font-size:28px;
+  width:25px;
+    height:25px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:5px;
+  cursor:pointer;
+  }
+  .price{
+    font-weight:100;
+    font-size:20px;
+    color:gray;
+    
+  }
+  .red{
+      color:red
+  }
+  .label-text h1{
+  font-size: 20px;
+}
+.product-label h1{
+  margin: 0;
+  text-align: center;
+}
+.product-label{
+  margin-top: 10px;
+  color: white;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
+
+<script src="/js/cart.js"></script>
+<script src="https://js.stripe.com/v3/"></script>
+  
+
+
