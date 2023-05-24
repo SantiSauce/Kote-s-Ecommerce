@@ -16,4 +16,4 @@
 </div>
 
 <h3 style="color: #333; margin-top: 30px;">DEPLOY</h3>
-<p style="color: #333;">Link to live version: <a href="https://kote-s-ecommerce-production.up.railway.app" target="_blank" style="color: #007bff;">Kote's Gin Shop</a></p>
+<p style="color: #333;">Link a version live: <a href="https://kote-s-ecommerce-production.up.railway.app" target="_blank" style="color: #007bff;">Kote's Gin Shop</a></p>
