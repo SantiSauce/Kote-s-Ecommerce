@@ -98,7 +98,6 @@ export const afterPayment = async (req, res, next) => {
   const totalCart = await CartService.getTotal(cid);
 
   if (isTokenProcessed(paymentToken)) {
-    console.log('aca');
     const ticket = await TicketService.getlast(user.email)
     res.render("successPayment", ticket);
   } else {
@@ -128,7 +127,6 @@ export const afterPayment = async (req, res, next) => {
       res.render("successPayment", ticketCreated);
       req.logger.info("Generated Ticket: ", ticketCreated);
     } catch (error) {
-      console.log(error);
       req.logger.error(error);
 
     }
