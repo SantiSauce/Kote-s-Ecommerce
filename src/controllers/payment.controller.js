@@ -99,6 +99,7 @@ export const afterPayment = async (req, res, next) => {
 
   if (isTokenProcessed(paymentToken)) {
     const ticket = await TicketService.getlast(user.email)
+    console.log(ticket);
     res.render("successPayment", ticket);
   } else {
     try {
