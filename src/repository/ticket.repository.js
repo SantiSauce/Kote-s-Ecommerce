@@ -35,6 +35,9 @@ export default class TicketRepository {
         return await this.dao.delete(tid)
     }
 
+    getlast = async(email) => {
+        return await this.dao.getlast(email)
+    }
 
 
 

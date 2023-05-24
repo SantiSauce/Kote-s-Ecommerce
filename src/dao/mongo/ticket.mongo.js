@@ -34,6 +34,12 @@ export default class Ticket {
         return true
     }
 
+    getLast = async(email) => {
+        const tickets = await ticketModel.find({email:email})
+        const lastTicket = tickets.slice(-1)[0]
+        return lastTicket
+    }
+
 
 
 
