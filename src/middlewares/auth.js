@@ -48,9 +48,7 @@ export const reqPremium = (req, res, next) => {
 
  export const auth = (...roles) => {
   return (req, res, next) => {
-    // console.log(req.user.token);
     let token = req.user ? (req.user.token !== undefined ? req.user.token : undefined) : undefined
-    console.log(token);
     if (process.env.NODE_ENV === 'test') {
       if (!token) {
         req.user = null; // Establece el usuario en null para indicar que no hay autenticación
@@ -76,14 +74,13 @@ export const reqPremium = (req, res, next) => {
       req.user = decoded.user
       next()
     } catch (error) {
-    //   const err = new CustomError({
-    //     status: ERRORS_ENUM.FORBIDDEN.status,
-    //     code: ERRORS_ENUM.FORBIDDEN.code,
-    //     message: ERRORS_ENUM.FORBIDDEN.message,
-    //     details:'Invalid token'
-    // })
-    // throw err
-    console.log(error);
+      const err = new CustomError({
+        status: ERRORS_ENUM.FORBIDDEN.status,
+        code: ERRORS_ENUM.FORBIDDEN.code,
+        message: ERRORS_ENUM.FORBIDDEN.message,
+        details:'Invalid token'
+    })
+    throw err
     }
   }
  }

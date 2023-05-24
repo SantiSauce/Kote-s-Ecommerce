@@ -1,35 +1,3 @@
-/*
-
-const cid = document.getElementById("purchase__btn").value;
-const pid = document.getElementById("plus").value
-
-
-
-  
-
-  
-
-
-  const plusBtn = document.getElementById("plus")
-
-  plusBtn.addEventListener("click", () => {
-  adProductToCart(cid, pid)    
-  })
-
-  const adProductToCart = async(cid, pid) => { 
-  try {
-    const response = await fetch(`/api/carts/${cid}/product/${pid}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }); 
-
-  } catch (error) {
-    console.log(error);
-  }
-  }*/
-
 const purchaseBtn = document.getElementById("purchase__btn");
 
 const cid = purchaseBtn.value;

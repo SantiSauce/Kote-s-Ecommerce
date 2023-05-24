@@ -89,7 +89,6 @@ export const changeUserRol = async(req, res, next) => {
 
   try {
     const uid = req.params.uid
-    console.log(uid);
     const user = await UserService.getById(uid)
     const requiredDocuments = ['Identificación', 'Comprobante_de_domicilio', 'Comprobante_de_estado_de_cuenta']
 
@@ -110,7 +109,6 @@ export const changeUserRol = async(req, res, next) => {
     throw err
    }
   } catch (error) {
-    console.log(error);
     next(error)
   }
 }

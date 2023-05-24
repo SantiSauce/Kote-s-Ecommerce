@@ -16,7 +16,6 @@ export const createProduct =  async (req, res, next) => {
         // const product = req.body
 
         if((!product.title || !product.description || !product.price || !product.thumbnail || !product.code || !product.stock || !product.category)){
-            console.log('llegue hasta custom error');
             const err = new CustomError({
                 status: ERRORS_ENUM.INVALID_INPUT.status,
                 code: ERRORS_ENUM.INVALID_INPUT.code,
@@ -26,18 +25,15 @@ export const createProduct =  async (req, res, next) => {
             throw err
         }
         const valide = await ProductService.verifyCode(product.code)
-        console.log(valide);
         if( valide === false){
              const prodocutInserted = await ProductService.create(product)
             res.json(`Product ${product.title} successfully created`)
     
         }else{
             res.status(400).json({message: 'code already exists', status: 400})
-            console.log('code already exists');
         }
   
     }catch (error) {
-        console.log(error);
         req.logger.error(error); 
         next(error)
     }
@@ -121,7 +117,6 @@ export const deleteProduct = async (req, res, next) => {
     try {
         const user = req.user.data
         const product = req.params.id
-        console.log({user,product});
         if(product.owner === user.email || user.rol ==='admin'){ //puedo hacer delete
             await ProductService.delete(product)
             if(product.owner !== 'admin'){// que el campo owner tiene email -> mando aviso de delete a email

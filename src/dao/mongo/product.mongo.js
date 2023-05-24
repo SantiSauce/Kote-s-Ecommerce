@@ -30,7 +30,6 @@ export default class Product {
 
     verifyCode = async(code) => {
         const result = await productModel.findOne({code: code}).lean().exec()
-        console.log(result);
         if(result === null) return false 
         return true
     }

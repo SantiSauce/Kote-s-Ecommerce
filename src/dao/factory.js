@@ -11,7 +11,7 @@ export let Ticket
 
 switch (process.env.PERSISTENCE) {
     default: //case 'MONGO':
-        console.log('connecting mongo..dfvf.')
+        console.log('connecting mongo...')
 
         mongoose.connect(process.env.MONGO_URL, {
             useNewUrlParser: true,

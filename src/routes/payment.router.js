@@ -11,12 +11,10 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const router = Router()
 
 router.post('/create-checkout-session', async (req, res) => {
-  const {cid} = req.body; // Obtén el ID del carrito desde req.body o cualquier otra fuente
-  console.log(cid);
-
+  const {cid} = req.body;
   try {
-    // Obtén la información del carrito utilizando el ID del carrito
-    const cartRequested = await CartService.getById(cid) // Reemplaza 'getCartById' con la lógica real para obtener la información del carrito
+
+    const cartRequested = await CartService.getById(cid) 
 
     if (!cartRequested) {
       return res.status(404).send({ status: 'error', error: 'Product not found' });
@@ -31,19 +29,18 @@ router.post('/create-checkout-session', async (req, res) => {
           price_data: {
             currency: 'usd',
             product_data: {
-              name: `Cart ${cartRequested._id}`, // Reemplaza con el nombre real del producto
+              name: `Cart ${cartRequested._id}`,
             },
-            unit_amount: totalCart * 100, // El precio debe estar en centavos
+            unit_amount: totalCart * 100,
           },
-          quantity: 1, // Puedes ajustar la cantidad según tus necesidades
+          quantity: 1,
         },
       ],
       mode: 'payment',
-      success_url: `http://localhost:8082/api/payments/success/${cid}`, // URL de éxito a la que se redirige después del pago
-      cancel_url: 'http://localhost:8082/api/payments/cancel', // URL de cancelación a la que se redirige si se cancela el pago
+      success_url: `http://localhost:8082/api/payments/success/${cid}`,
+      cancel_url: 'http://localhost:8082/api/payments/cancel', 
     });
 
-    console.log(session);
     res.send({ status: 'success', payload: session });
   } catch (error) {
     console.error(error);

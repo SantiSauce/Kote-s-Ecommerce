@@ -29,26 +29,3 @@ function addToCart(event) {
       console.log(error);
     });
 }
-
-
-
-
-// const addToCart = async (cid, pid) => {
-//   try {
-//     const response = await fetch(`/api/carts/${cid}/product/${pid}`, {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     });
-
-//     const result = await response.json();
-
-//     if (response.status === 200) {
-//       alert("Producto agregado correctamente");
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-

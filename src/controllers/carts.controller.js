@@ -42,7 +42,6 @@ export const addProductToCart = async (req, res, next) => {
 
     try {
         const user = req.user
-        console.log(user);
 
         const product = await ProductService.getById(req.params.pid)
         if(user.rol === 'premium'){
@@ -62,7 +61,6 @@ export const addProductToCart = async (req, res, next) => {
 
         // res.redirect(`/cart/${req.params.cid}`)        
     } catch (error) {
-        console.log(error);
         req.logger.error(error); 
     }
 }
@@ -161,7 +159,6 @@ export const generatePurchase = async(req, res) => {
         //   productsRejected: rejectedProducts,
         // });
       } catch (error) {
-        console.log(error);
         req.logger.error(error); 
       }
       
@@ -202,7 +199,6 @@ export const confirmCart = async(req, res, next) =>{
         
         
       } catch (error) {
-        console.log(error);
         req.logger.error(error); 
       }
 }

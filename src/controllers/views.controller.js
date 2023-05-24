@@ -62,7 +62,6 @@ export const showAllProducts = async (req, res) => {
     const cuenta = req.session.count
    
     const user = req.user
-    // console.log(user.cart);
     const response = {
         status: 'success', 
         payload: products.docs,
@@ -76,7 +75,6 @@ export const showAllProducts = async (req, res) => {
         prevLink: products.prevLink,
         nextLink: products.nextLink
     }
-    console.log('response: ', user);
     res.render('allProducts', {response, admin, activeSession, user})
 }
 
@@ -91,7 +89,6 @@ export const showHomeView = async(req, res) => {
             res.render('login')
         }
     } catch (error) {
-        console.log(error);
         
     }
     
