@@ -78,6 +78,6 @@ export const isTokenProcessed = (token) => {
 };
 
 export const markTokenAsProcessed = (token) => {
-    const expirationTime = 24 * 60 * 60 * 1000; // 24 horas en milisegundos
+  const expirationTime = 24 * 60 * 60 * 1000; // 24 horas en milisegundos
   cache.put(token, true);
 };
