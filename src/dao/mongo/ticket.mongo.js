@@ -25,8 +25,8 @@ export default class Ticket {
 
     }
     create = async(data) => {
-        await ticketModel.create(data)
-        return true
+        return await ticketModel.create(data)
+        
     }
 
     delete = async(tid) => {
