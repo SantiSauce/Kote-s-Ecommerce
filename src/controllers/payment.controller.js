@@ -44,7 +44,7 @@ export const completePayment = async (req, res, next) => {
         },
       ],
       mode: "payment",
-      success_url: `https://kote-s-ecommerce-production.up.railway.app/api/payments/success/${cid}?token=${token}`,
+      success_url: `http://localhost:8082/api/payments/success/${cid}?token=${token}`, //cambiar si usas localhost: o railway(https://kote-s-ecommerce-production.up.railway.app)
       cancel_url: "http://localhost:8082/api/payments/cancel",
     });
 
@@ -96,10 +96,9 @@ export const afterPayment = async (req, res, next) => {
   const cart = await CartService.getById(cid);
   const user = await UserService.getUserByCartId(cid);
   const totalCart = await CartService.getTotal(cid);
-
-  if (isTokenProcessed(paymentToken)) {
+  const processedToken = isTokenProcessed(paymentToken)
+  if (processedToken === false) {
     const ticket = await TicketService.getlast(user.email)
-    console.log(ticket);
     res.render("successPayment", ticket);
   } else {
     try {
@@ -126,9 +125,9 @@ export const afterPayment = async (req, res, next) => {
       });
       markTokenAsProcessed(paymentToken)
       res.render("successPayment", ticket);
-      req.logger.info("Generated Ticket: ", ticketCreated);
+      req.logger.info("Generated Ticket: ", ticket);
+      // console.log(ticket);
     } catch (error) {
-      console.log(error);
       req.logger.error(error);
 
     }

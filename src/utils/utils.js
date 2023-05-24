@@ -74,7 +74,8 @@ export const extractCookie = (req) => {
 
 export const isTokenProcessed = (token) => {
   const processedToken = cache.get(token);
-  if(!!processedToken === true){
+  console.log('auth isTokenProcessed: ', processedToken);
+  if(processedToken === null){
     return true
   }else{
     return false
@@ -82,6 +83,6 @@ export const isTokenProcessed = (token) => {
 };
 
 export const markTokenAsProcessed = (token) => {
-  const expirationTime = 24 * 60 * 60 * 1000; // 24 horas en milisegundos
-  cache.put(token, true);
+  console.log('markToke: ', token);
+  cache.put(token);
 };
