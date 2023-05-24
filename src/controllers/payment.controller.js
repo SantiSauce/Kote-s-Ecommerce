@@ -128,6 +128,7 @@ export const afterPayment = async (req, res, next) => {
       res.render("successPayment", ticket);
       req.logger.info("Generated Ticket: ", ticketCreated);
     } catch (error) {
+      console.log(error);
       req.logger.error(error);
 
     }
