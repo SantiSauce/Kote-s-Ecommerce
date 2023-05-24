@@ -36,7 +36,7 @@ export default class TicketRepository {
     }
 
     getlast = async(email) => {
-        return await this.dao.getlast(email)
+        return await this.dao.getLast(email)
     }
 
 

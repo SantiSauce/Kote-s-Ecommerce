@@ -8,6 +8,7 @@ import { TicketService } from "../repository/index.js";
 import { isTokenProcessed } from "../utils/utils.js";
 import { markTokenAsProcessed } from "../utils/utils.js";
 import { generateToken } from "../utils/utils.js";
+import { generateRandomString } from "../public/js/generateRandomString.js";
 dotenv.config();
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -97,6 +98,7 @@ export const afterPayment = async (req, res, next) => {
   const totalCart = await CartService.getTotal(cid);
 
   if (isTokenProcessed(paymentToken)) {
+    console.log('aca');
     const ticket = await TicketService.getlast(user.email)
     res.render("successPayment", ticket);
   } else {
@@ -122,10 +124,13 @@ export const afterPayment = async (req, res, next) => {
         purchaser: user.email,
         products: purchasedProductsComplete
       });
+      markTokenAsProcessed(paymentToken)
       res.render("successPayment", ticketCreated);
       req.logger.info("Generated Ticket: ", ticketCreated);
     } catch (error) {
+      console.log(error);
       req.logger.error(error);
+
     }
   }
 };
