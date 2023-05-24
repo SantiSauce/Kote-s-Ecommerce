@@ -44,7 +44,7 @@ export const completePayment = async (req, res, next) => {
         },
       ],
       mode: "payment",
-      success_url: `http://localhost:8082/api/payments/success/${cid}?token=${token}`,
+      success_url: `https://kote-s-ecommerce-production.up.railway.app/api/payments/success/${cid}?token=${token}`,
       cancel_url: "http://localhost:8082/api/payments/cancel",
     });
 
