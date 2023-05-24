@@ -74,7 +74,12 @@ export const extractCookie = (req) => {
 
 export const isTokenProcessed = (token) => {
   const processedToken = cache.get(token);
-  return !!processedToken; // Devolver true si el token existe en el caché, false de lo contrario
+  if(!!processedToken === true){
+    cache.del(token)
+    return true
+  }else{
+    return false
+  }
 };
 
 export const markTokenAsProcessed = (token) => {
