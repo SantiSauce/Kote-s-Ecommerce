@@ -1,14 +1,14 @@
 <div class="success-container">
   <h2 class="success-title">¡Compra Exitosa!</h2>
   
-  <p><strong>Código de Compra:</strong> {{newTicket.code}}</p>
-  <p><strong>Fecha y Hora de Compra:</strong> {{newTicket.purchase_datetime}}</p>
-  <p><strong>Total de la Compra:</strong> {{newTicket.amount}}</p>
-  <p><strong>Comprador:</strong> {{newTicket.purchaser}}</p>
+  <p><strong>Código de Compra:</strong> {{ticket.code}}</p>
+  <p><strong>Fecha y Hora de Compra:</strong> {{ticket.purchase_datetime}}</p>
+  <p><strong>Total de la Compra:</strong> {{ticket.amount}}</p>
+  <p><strong>Comprador:</strong> {{ticket.purchaser}}</p>
   
   <h3>Productos Comprados:</h3>
   <ul>
-    {{#each purchasedProductsComplete}}
+    {{#each ticket.products}}
       <li>
         <h4>{{this.title}}</h4>
         <p>{{this.description}}</p>

@@ -116,7 +116,7 @@ export const afterPayment = async (req, res, next) => {
           return product;
         })
       );
-      const ticketCreated = await TicketService.create({
+      const ticket = await TicketService.create({
         code: generateRandomString(),
         purchase_datetime: new Date(),
         amount: totalCart,
@@ -124,7 +124,7 @@ export const afterPayment = async (req, res, next) => {
         products: purchasedProductsComplete
       });
       markTokenAsProcessed(paymentToken)
-      res.render("successPayment", ticketCreated);
+      res.render("successPayment", ticket);
       req.logger.info("Generated Ticket: ", ticketCreated);
     } catch (error) {
       req.logger.error(error);
