@@ -1,4 +1,3 @@
-# Kote-s-Ecommerce
 <h1 style="color: #333; text-align: center;">Kote's Gin - Ecommerce</h1>
 
 <div style="background-color: #f4f4f4; border-radius: 5px; padding: 20px; margin-top: 30px;">
